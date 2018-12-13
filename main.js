@@ -131,3 +131,26 @@ const findUser = users.find(function(user) {
   return user.name === "Alex";
 });
 console.log(findUser);
+
+// ***Complex Find Loop***
+function Car(model) {
+  this.model = model;
+}
+
+const cars = [new Car("Buick"), new Car("Camaro"), new Car("Focus")];
+
+const findCar = cars.find(function(car) {
+  return car.model === "Focus";
+});
+console.log(findCar);
+
+const posts = [{ id: 1, title: "New Post" }, { id: 2, title: "Old Post" }];
+const comment = { postId: 1, content: "awesome post" };
+
+function postForComment(posts, comment) {
+  return posts.find(function(post) {
+    return post.id === comment.postId;
+  });
+}
+
+console.log(postForComment(posts, comment));
