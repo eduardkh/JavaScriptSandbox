@@ -5,7 +5,7 @@ console.log("JavaScript sandbox Test Console");
 //  ***ForEach Loop***
 const colors = ["red", "green", "blue"];
 
-// Reguler old For Loop
+// Regular old For Loop
 for (let i = 0; i < colors.length; i++) {
   const colorsElement = colors[i];
   console.log(colorsElement);
@@ -69,7 +69,7 @@ const products = [
   { name: "celery", type: "vegetable" },
   { name: "orange", type: "fruite" }
 ];
-// Reguler old For Loop
+// Regular old For Loop
 const filterdProducts = [];
 for (let i = 0; i < products.length; i++) {
   if (products[i].type === "fruite") {
@@ -111,12 +111,12 @@ function commentsForPost(post, comments) {
 }
 
 console.log(commentsForPost(post, comments));
-*/
+
 
 // ***Find Loop***
 const users = [{ name: "Jill" }, { name: "Alex" }, { name: "Bill" }];
 
-// Reguler old For Loop
+// Regular old For Loop
 let user;
 const filterdProducts = [];
 for (let i = 0; i < users.length; i++) {
@@ -154,3 +154,36 @@ function postForComment(posts, comment) {
 }
 
 console.log(postForComment(posts, comment));
+*/
+
+//  ***Every and Some Helpers***
+const computers = [
+  { name: "Apple", ram: 24 },
+  { name: "Compaq", ram: 4 },
+  { name: "Acer", ram: 32 }
+];
+
+let allComputersCanRunProgram = true;
+let onlySomeComputersCanRunProgram = false;
+
+// Regular old For Loop
+for (let i = 0; i < computers.length; i++) {
+  let computer = computers[i];
+  if (computer.ram < 16) {
+    allComputersCanRunProgram = false;
+  } else {
+    onlySomeComputersCanRunProgram = true;
+  }
+}
+console.log(allComputersCanRunProgram);
+console.log(onlySomeComputersCanRunProgram);
+
+const everyComputer = computers.every(function(computer) {
+  return computer.ram > 16;
+});
+console.log(`Every Helper: ${everyComputer}`);
+
+const someComputer = computers.some(function(computer) {
+  return computer.ram > 16;
+});
+console.log(`Some Helper: ${someComputer}`);
