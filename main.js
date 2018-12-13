@@ -62,7 +62,6 @@ const prices = cars.map(function(car) {
 
 console.log(prices);
 
-*/
 // ***Filter Loop***
 const products = [
   { name: "cucumber", type: "vegetable" },
@@ -112,3 +111,23 @@ function commentsForPost(post, comments) {
 }
 
 console.log(commentsForPost(post, comments));
+*/
+
+// ***Find Loop***
+const users = [{ name: "Jill" }, { name: "Alex" }, { name: "Bill" }];
+
+// Reguler old For Loop
+let user;
+const filterdProducts = [];
+for (let i = 0; i < users.length; i++) {
+  if (users[i].name === "Alex") {
+    user = users[i];
+    break;
+  }
+}
+console.log(user);
+
+const findUser = users.find(function(user) {
+  return user.name === "Alex";
+});
+console.log(findUser);
