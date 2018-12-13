@@ -154,7 +154,7 @@ function postForComment(posts, comment) {
 }
 
 console.log(postForComment(posts, comment));
-*/
+
 
 //  ***Every and Some Helpers***
 const computers = [
@@ -187,3 +187,43 @@ const someComputer = computers.some(function(computer) {
   return computer.ram > 16;
 });
 console.log(`Some Helper: ${someComputer}`);
+
+const names = ["Alexandria", "Matthew", "Joe"];
+
+const everyName = names.every(function(name) {
+  return name.length > 4;
+});
+console.log(`EVERY name has more than 4 characters: ${everyName}`);
+
+const someName = names.some(function(name) {
+  return name.length > 4;
+});
+console.log(`SOME name has more than 4 characters: ${someName}`);
+*/
+
+//  ***Every Helper - Practical Example***
+
+function Field(value) {
+  this.value = value;
+}
+
+Field.prototype.validate = function() {
+  return this.value.length > 0;
+};
+
+const username = new Field("username");
+const password = new Field("password");
+const birthDate = new Field("01/03/1984");
+
+const fields = [username, password, birthDate];
+
+const formIsValid = fields.every(function(field) {
+  return field.validate();
+});
+console.log(`EVERY field is Validated: ${formIsValid}`);
+
+if (formIsValid) {
+  console.log(`Form Is Valid: ${formIsValid} - you can go in`);
+} else {
+  console.log(`Form Is Valid: ${formIsValid} - you can't go in`);
+}
