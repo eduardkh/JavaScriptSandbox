@@ -199,7 +199,6 @@ const someName = names.some(function(name) {
   return name.length > 4;
 });
 console.log(`SOME name has more than 4 characters: ${someName}`);
-*/
 
 //  ***Every Helper - Practical Example***
 
@@ -227,3 +226,54 @@ if (formIsValid) {
 } else {
   console.log(`Form Is Valid: ${formIsValid} - you can't go in`);
 }
+*/
+
+//  ***Reduce Helper***
+// Regular old For Loop
+const numbers = [10, 20, 30];
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+  sum += numbers[i];
+}
+console.log(`the Sum is: ${sum} - Regular old For Loop`);
+
+//Simple Reduce Helper
+const numbersReduce = numbers.reduce(function(sum, number) {
+  return sum + number;
+}, 0);
+console.log(`the Sum is: ${numbersReduce} - Using the Reduce Helper`);
+
+//Reduce Helper - List of Strings
+const primaryColors = [{ color: "red" }, { color: "green" }, { color: "blue" }];
+const primaryColorsReduce = primaryColors.reduce(function(
+  previous,
+  primaryColor
+) {
+  previous.push(primaryColor.color);
+  return previous;
+},
+[]);
+console.log(
+  `list of Strings: ${primaryColorsReduce} - Using the Reduce Helper`
+);
+
+//Reduce Helper - Check For Balanced Parenthesis
+function balancedParens(string) {
+  return !string.split("").reduce(function(previous, char) {
+    if (previous < 0) {
+      return previous;
+    }
+    if (char === "(") {
+      return ++previous;
+    }
+    if (char === ")") {
+      return --previous;
+    }
+    return previous;
+  }, 0);
+}
+console.log(
+  `Balanced Parenthesis Check: ${balancedParens(
+    "()"
+  )} - Using the Reduce Helper`
+);
