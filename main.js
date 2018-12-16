@@ -226,7 +226,6 @@ if (formIsValid) {
 } else {
   console.log(`Form Is Valid: ${formIsValid} - you can't go in`);
 }
-*/
 
 //  ***Reduce Helper***
 // Regular old For Loop
@@ -277,3 +276,65 @@ console.log(
     "()"
   )} - Using the Reduce Helper`
 );
+
+*/
+
+//  ***Arrow functions***
+//regular old function
+const regularAdd = function(a, b) {
+  return a + b;
+};
+console.log(`Adding ${regularAdd(1, 3)} - regular old function`);
+
+//arrow function
+const arrowAdd = (a, b) => {
+  return a + b;
+};
+console.log(`Adding ${arrowAdd(2, 3)} - arrow function`);
+
+//arrow function - single expression (implicit return)
+const arrowAddImp = (a, b) => a + b;
+console.log(`Adding ${arrowAddImp(6, 6)} - arrow function Single line`);
+
+//arrow function - single argument
+const double = number => number * 2;
+console.log(`double ${double(15)} - arrow function Single argument`);
+
+//arrow function doubling array - BEFORE
+numbers = [1, 2, 3];
+const numbersMapBefore = numbers.map(function(number) {
+  return 2 * number;
+});
+console.log(`double array ${numbersMapBefore} - arrow function BEFORE`);
+
+//arrow function doubling array - AFTER
+const numbersMapAfter = numbers.map(number => 2 * number);
+console.log(`double array ${numbersMapAfter} - arrow function AFTER`);
+
+//arrow function with NO lexical this
+const noTeamArrow = {
+  members: ["jane", "Bill"],
+  teamName: "Super Squad",
+  teamSummary: function() {
+    return this.members.map(
+      function(member) {
+        return `${member} is on team ${this.teamName}`;
+      }.bind(this) //bind(this) used to bind the function to the parent(noTeamArrow)
+    );
+  }
+};
+const noTeamLog = noTeamArrow.teamSummary();
+console.log(noTeamLog);
+
+//arrow function lexical this
+const teamArrow = {
+  members: ["jane", "Bill"],
+  teamName: "Super Squad",
+  teamSummary: function() {
+    return this.members.map(member => {
+      return `${member} is on team ${this.teamName}`;
+    });
+  }
+};
+const teamLog = teamArrow.teamSummary();
+console.log(teamLog);
