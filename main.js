@@ -336,7 +336,6 @@ const teamArrow = {
 };
 const teamLog = teamArrow.teamSummary();
 console.log(teamLog);
-*/
 
 //  ***JavaScript object literals***
 // the old way
@@ -384,3 +383,27 @@ console.log(bookShop.inventoryValue());
 console.log(bookShop.priceForTitle("Harry Potter"));
 
 // L33
+*/
+
+//  ***Default function arguments***
+
+// the old way
+function makeAjaxRequest(url, method) {
+  if (!method) {
+    method = "GET";
+  }
+  return `http://${url}/${method}/`;
+  //some logic
+}
+console.log(makeAjaxRequest("google.co.il"));
+console.log(makeAjaxRequest("google.co.il", "GET"));
+
+// the New way
+function NewMakeAjaxRequest(url, method = "GET") {
+  return `http://${url}/${method}/`;
+  //some logic
+}
+console.log(NewMakeAjaxRequest("google.co.il"));
+console.log(NewMakeAjaxRequest("google.co.il", "POST"));
+
+// L35
