@@ -406,7 +406,6 @@ function NewMakeAjaxRequest(url, method = "GET") {
 console.log(NewMakeAjaxRequest("google.co.il"));
 console.log(NewMakeAjaxRequest("google.co.il", "POST"));
 
-*/
 // L35 ***Rest and Spread operators***
 //without Rest operator - you need an array
 function addNumbers(numbers) {
@@ -451,3 +450,61 @@ function validateShoppingList(...items) {
 }
 const shoppingList = validateShoppingList("Oranges", "Eggs", "milk");
 console.log(shoppingList);
+
+*/
+// L38 ***Destructuring***
+//without Destructuring
+var expense = {
+  type: "Business",
+  amount: "$45 USD"
+};
+var noDestructuringType = expense.type;
+var noDestructuringAmount = expense.amount;
+console.log(
+  `some ${noDestructuringType} item - cost: ${noDestructuringAmount} without Destructuring`
+);
+
+//with Destructuring
+const { type, amount } = expense;
+console.log(`some ${type} item - cost: ${amount} without Destructuring`);
+
+var savedFiled = {
+  extension: "jpeg",
+  name: "picture",
+  size: "14040"
+};
+//without Destructuring
+function fileSummary(file) {
+  return `the file ${file.name}.${file.extension} is of size ${file.size}`;
+}
+console.log(fileSummary(savedFiled));
+
+//with Destructuring
+function fileSummary({ name, extension, size }) {
+  return `the file ${name}.${extension} is of size ${size}`;
+}
+console.log(fileSummary(savedFiled));
+
+//with Destructuring with color red
+// function fileSummary({ name, extension, size }, { color }) {
+//   return `${color} - the file ${name}.${extension} is of size ${size}`;
+// }
+// console.log(fileSummary(savedFiled, { color: "red" }));
+
+//** */Destructuring from array**
+const companies = ["Google", "Facebook", "Uber", "Tweeter"];
+
+//without Destructuring
+const firstCompany = companies[0];
+console.log(firstCompany);
+
+//with Destructuring - square brackets to pull items
+const [name, name2, ...rest] = companies;
+console.log(name, name2); //first two names
+console.log(...rest); //rest of the names
+
+//with Destructuring - curly brackets to pull properties
+const { length } = companies;
+console.log(length);
+
+// L41 ***Destructuring Objects and Arrays***
