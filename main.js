@@ -383,7 +383,7 @@ console.log(bookShop.inventoryValue());
 console.log(bookShop.priceForTitle("Harry Potter"));
 
 // L33
-*/
+
 
 //  ***Default function arguments***
 
@@ -406,4 +406,48 @@ function NewMakeAjaxRequest(url, method = "GET") {
 console.log(NewMakeAjaxRequest("google.co.il"));
 console.log(NewMakeAjaxRequest("google.co.il", "POST"));
 
-// L35
+*/
+// L35 ***Rest and Spread operators***
+//without Rest operator - you need an array
+function addNumbers(numbers) {
+  return numbers.reduce((sum, number) => {
+    return sum + number;
+  }, 0);
+}
+console.log(addNumbers([1, 2, 3, 4, 5]));
+
+//with Rest operator - you don't need an array
+function restAddNumbers(...numbers) {
+  return numbers.reduce((sum, number) => {
+    return sum + number;
+  }, 0);
+}
+console.log(restAddNumbers(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
+
+const defaultColors = ["red", "green"];
+const userFavoriteColors = ["orange", "yellow"];
+
+//without Spread operators - you use concat
+const combinedColors = defaultColors.concat(userFavoriteColors);
+console.log(combinedColors);
+
+//with Spread operators - you dump all the values to a new array
+const spreadCombinedColors = [...defaultColors, ...userFavoriteColors];
+console.log(spreadCombinedColors);
+//with Spread operators - another example
+const blueSpreadCombinedColors = [
+  "blue",
+  ...defaultColors,
+  ...userFavoriteColors
+];
+console.log(blueSpreadCombinedColors);
+
+//complex example - if milk not in list add it
+function validateShoppingList(...items) {
+  if (items.indexOf("milk") < 0) {
+    return ["milk", ...items];
+  }
+  return items;
+}
+const shoppingList = validateShoppingList("Oranges", "Eggs", "milk");
+console.log(shoppingList);
