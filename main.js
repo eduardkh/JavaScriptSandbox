@@ -451,7 +451,6 @@ function validateShoppingList(...items) {
 const shoppingList = validateShoppingList("Oranges", "Eggs", "milk");
 console.log(shoppingList);
 
-*/
 // L38 ***Destructuring***
 //without Destructuring
 var expense = {
@@ -491,7 +490,7 @@ console.log(fileSummary(savedFiled));
 // }
 // console.log(fileSummary(savedFiled, { color: "red" }));
 
-//** */Destructuring from array**
+//** Destructuring from array**
 const companies = ["Google", "Facebook", "Uber", "Tweeter"];
 
 //without Destructuring
@@ -508,3 +507,59 @@ const { length } = companies;
 console.log(length);
 
 // L41 ***Destructuring Objects and Arrays***
+const ArrayObjectCompanies = [
+  { name: "Google", Location: "Mountain View" },
+  { name: "Facebook", Location: "Menlo Park" },
+  { name: "Uber", Location: "San Francisco" }
+];
+//without Destructuring
+const ES5Location = ArrayObjectCompanies[0].Location;
+console.log(`${ES5Location} - ES5 Style`);
+
+//with Destructuring - square brackets to pull item(s) and curly brackets to pull Location properties
+const [{ Location: Location }] = ArrayObjectCompanies;
+console.log(`${Location} - with Destructuring`);
+
+const Google = {
+  locations: ["Mountain View", "New York", "London"]
+};
+
+const { locations } = Google;
+console.log(`${locations} - Extracting locations Array from an Object`);
+console.log(
+  `${locations[2]} - Extracting  individual locations from an Object`
+);
+
+*/
+// L42 ***Destructuring Practical Example***
+//without Destructuring
+// function SignUp(username, password, email, dateOfBirth, city) {
+//   //code
+// }
+
+// SignUp(
+//   "myusername",
+//   "mypassword",
+//   "myemail@gmail.com",
+//   "01.03.1984",
+//   "Tel-Aviv"
+// );
+
+//with Destructuring - extract individual object elements (the order doesn't matter)
+function SignUp({ username, password, email, dateOfBirth, city }) {
+  console.log(`
+Username: ${username}
+Password: ${password}
+Email: ${email}
+Date Of Birth: ${dateOfBirth}
+City: ${city}`);
+}
+const user = {
+  username: "myusername",
+  password: "mypassword",
+  email: "myemail@gmail.com",
+  dateOfBirth: "01.03.1984",
+  city: "Tel-Aviv"
+};
+//provide a single object
+SignUp(user);
