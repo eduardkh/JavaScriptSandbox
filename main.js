@@ -563,7 +563,6 @@ const user = {
 //provide a single object
 SignUp(user);
 
-*/
 // L43 ***Destructuring Practical Example  - Arrays***
 // change the structure of 'array of arrays' to 'array of objects'
 const points = [[4, 5], [10, 1], [0, 40]];
@@ -572,3 +571,69 @@ const convertedPoints = points.map(([x, y]) => {
   return { x, y };
 });
 console.log(convertedPoints);
+
+*/
+// L44 ***inheritance and ES6 Classes***
+// basic object creation in javascript
+// function Car(options) {
+//   this.title = options.title;
+// }
+// //adding new properties via the prototype constructor
+// Car.prototype.drive = function() {
+//   return "vroom";
+// };
+// const car = new Car({ title: "Focus" });
+// console.log(car.title);
+// console.log(car.drive());
+
+// //Toyota inheriting Car Properties
+// function Toyota(options) {
+//   Car.call(this, options);
+//   this.color = options.color;
+// }
+// //Toyota inheriting Car prototype
+// Toyota.prototype = Object.create(Car.prototype);
+// Toyota.prototype.constructor = Toyota;
+// //Toyota add new prototype
+// Toyota.prototype.honk = function() {
+//   return "Beep";
+// };
+
+// const toyota = new Toyota({ color: "Red", title: "Daily Driver" });
+// console.log(`My ${toyota.color} Toyota is my ${toyota.title}`);
+// console.log(
+//   `${toyota.drive()} ${toyota.drive()} ${toyota.honk()} ${toyota.honk()}`
+// );
+
+//L46 ES6 Classes
+class Car {
+  constructor({ title }) {
+    this.title = title;
+  }
+  drive() {
+    return "vroom";
+  }
+}
+
+const car = new Car({ title: "Ford" });
+console.log(`${car.title} goes ${car.drive()}`);
+
+class Toyota extends Car {
+  constructor(options) {
+    super(options);
+    this.color = options.color;
+  }
+  honk() {
+    return "beep";
+  }
+}
+
+const toyota = new Toyota({ color: "Red", title: "Corolla" });
+
+console.log(
+  `My ${toyota.color} ${
+    toyota.title
+  } goes ${toyota.drive()} and ${toyota.honk()}`
+);
+
+//L48
