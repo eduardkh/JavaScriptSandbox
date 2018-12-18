@@ -530,7 +530,6 @@ console.log(
   `${locations[2]} - Extracting  individual locations from an Object`
 );
 
-*/
 // L42 ***Destructuring Practical Example***
 //without Destructuring
 // function SignUp(username, password, email, dateOfBirth, city) {
@@ -563,3 +562,13 @@ const user = {
 };
 //provide a single object
 SignUp(user);
+
+*/
+// L43 ***Destructuring Practical Example  - Arrays***
+// change the structure of 'array of arrays' to 'array of objects'
+const points = [[4, 5], [10, 1], [0, 40]];
+
+const convertedPoints = points.map(([x, y]) => {
+  return { x, y };
+});
+console.log(convertedPoints);
