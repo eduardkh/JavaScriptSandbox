@@ -572,7 +572,6 @@ const convertedPoints = points.map(([x, y]) => {
 });
 console.log(convertedPoints);
 
-*/
 // L44 ***inheritance and ES6 Classes***
 // basic object creation in javascript
 // function Car(options) {
@@ -636,4 +635,29 @@ console.log(
   } goes ${toyota.drive()} and ${toyota.honk()}`
 );
 
-//L48
+*/
+// ***Generators***
+//L49 - for of loop
+const colors = ["red", "green", "blue"];
+for (const color of colors) {
+  console.log(color);
+}
+
+const numbers = [1, 2, 3, 4];
+let total = 0;
+for (const number of numbers) {
+  total += number;
+}
+console.log(total);
+
+//L50/51/52 Generators - a function that can br entered and exited multiple times
+function* shopping() {
+  const stuffFromStore = yield "cash";
+  const stuffFromLaundry = yield "Laundry";
+  //yield - stop at this point and come back to this exact point on the second gen.next("with the value provided")
+  return [stuffFromStore, stuffFromLaundry];
+}
+const gen = shopping();
+console.log(gen.next()); // leaving our house
+console.log(gen.next("groceries")); // leaving the sore with groceries
+console.log(gen.next("Laundry")); // leaving the Laundry with clean clothes
