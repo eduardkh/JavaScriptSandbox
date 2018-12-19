@@ -707,7 +707,6 @@ for (const name of engineeringTeam) {
   names.push(name);
 }
 console.log(names);
-*/
 
 //L59/60 Iterating a tree with for of loop
 class Comment {
@@ -738,3 +737,12 @@ for (const value of tree) {
 
 console.log(tree);
 console.log(values);
+*/
+
+//L61-67 promises and fetch - better to use axios
+const url = "https://jsonplaceholder.typicode.com/posts/";
+// fetch(url).then(data => console.log(data)); //not getting the data right away
+fetch(url)
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.log("BAD", error));
