@@ -635,7 +635,6 @@ console.log(
   } goes ${toyota.drive()} and ${toyota.honk()}`
 );
 
-*/
 // ***Generators***
 //L49 - for of loop
 const colors = ["red", "green", "blue"];
@@ -676,3 +675,27 @@ for (const color of GeneratorColors()) {
   myColors.push(color);
 }
 console.log(myColors);
+*/
+
+//L54 Generators with for of loops - practical example
+const engineeringTeam = {
+  size: 3,
+  department: "Engineering",
+  lead: "Jill",
+  manager: "Alex",
+  engineer: "Dave"
+};
+
+//get partial values from the object
+function* TeamIterator(team) {
+  yield team.lead;
+  yield team.manager;
+  yield team.engineer;
+}
+
+const names = [];
+//push those values into the names array
+for (const name of TeamIterator(engineeringTeam)) {
+  names.push(name);
+}
+console.log(names);
