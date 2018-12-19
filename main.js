@@ -677,10 +677,14 @@ for (const color of GeneratorColors()) {
 console.log(myColors);
 */
 
-//L55/56 Generators with for of loops - practical example 2 - Generator Delegator
+//L57/58 Generators with for of loops - practical example 2 - Generator Delegator (Refactored with Symbol.iterator)
 const testingTeam = {
   lead: "Amanda",
-  tester: "Bill"
+  tester: "Bill",
+  [Symbol.iterator]: function*() {
+    yield this.lead;
+    yield this.tester;
+  }
 };
 
 const engineeringTeam = {
@@ -689,27 +693,18 @@ const engineeringTeam = {
   department: "Engineering",
   lead: "Jill",
   manager: "Alex",
-  engineer: "Dave"
+  engineer: "Dave",
+  [Symbol.iterator]: function*() {
+    yield this.lead;
+    yield this.manager;
+    yield this.engineer;
+    yield* this.testingTeam;
+  }
 };
-
-//get partial values from the engineeringTeam object
-function* TeamIterator(team) {
-  yield team.lead;
-  yield team.manager;
-  yield team.engineer;
-  const testingTeamGenerator = TestingTeamIterator(team.testingTeam);
-  yield* testingTeamGenerator;
-}
-
-//get values from the testingTeam object inside the engineeringTeam object
-function* TestingTeamIterator(team) {
-  yield team.lead;
-  yield team.tester;
-}
 
 const names = [];
 //push those values into the names array
-for (const name of TeamIterator(engineeringTeam)) {
+for (const name of engineeringTeam) {
   names.push(name);
 }
 console.log(names);
