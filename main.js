@@ -650,14 +650,29 @@ for (const number of numbers) {
 }
 console.log(total);
 
-//L50/51/52 Generators - a function that can br entered and exited multiple times
+//L50/51/52 Generators - a function that can be entered and exited multiple times
 function* shopping() {
-  const stuffFromStore = yield "cash";
-  const stuffFromLaundry = yield "Laundry";
   //yield - stop at this point and come back to this exact point on the second gen.next("with the value provided")
+  const stuffFromStore = yield "cash";
+  //yield - stop at this point and come back to this exact point on the third gen.next("with the value provided")
+  const stuffFromLaundry = yield "Laundry";
   return [stuffFromStore, stuffFromLaundry];
 }
 const gen = shopping();
 console.log(gen.next()); // leaving our house
 console.log(gen.next("groceries")); // leaving the sore with groceries
 console.log(gen.next("Laundry")); // leaving the Laundry with clean clothes
+
+console.log("************************************");
+//L53 Generators with for of loops - can loop trough any type on data structure
+function* GeneratorColors() {
+  yield "Red";
+  yield "Green";
+  yield "Blue";
+}
+
+const myColors = [];
+for (const color of GeneratorColors()) {
+  myColors.push(color);
+}
+console.log(myColors);
