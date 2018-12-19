@@ -675,7 +675,6 @@ for (const color of GeneratorColors()) {
   myColors.push(color);
 }
 console.log(myColors);
-*/
 
 //L57/58 Generators with for of loops - practical example 2 - Generator Delegator (Refactored with Symbol.iterator)
 const testingTeam = {
@@ -708,3 +707,34 @@ for (const name of engineeringTeam) {
   names.push(name);
 }
 console.log(names);
+*/
+
+//L59/60 Iterating a tree with for of loop
+class Comment {
+  constructor(content, children) {
+    this.content = content;
+    this.children = children;
+  }
+  *[Symbol.iterator]() {
+    yield this.content;
+    for (const child of this.children) {
+      yield* child;
+    }
+  }
+}
+
+const children = [
+  new Comment("Good Comment", []),
+  new Comment("Bad Comment", []),
+  new Comment("meh", [])
+];
+
+const tree = new Comment("Great post!", children);
+
+const values = [];
+for (const value of tree) {
+  values.push(value);
+}
+
+console.log(tree);
+console.log(values);
