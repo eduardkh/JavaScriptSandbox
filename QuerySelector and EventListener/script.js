@@ -31,3 +31,7 @@ sukaID.addEventListener('click', function () {
         this.style.backgroundColor = 'white';
     }
 });
+
+sukaID.addEventListener('click', function (e) {
+    console.log(e);
+});
