@@ -22,3 +22,12 @@ sukaID.addEventListener('mouseout', function () {
     // Change the font weight style back to 'normal' when the mouse leaves the element
     this.style.fontWeight = 'normal';
 });
+
+sukaID.addEventListener('click', function () {
+    if (this.style.backgroundColor != 'red') {
+        this.style.backgroundColor = 'red';
+    }
+    else {
+        this.style.backgroundColor = 'white';
+    }
+});
